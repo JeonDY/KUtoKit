@@ -1,6 +1,8 @@
 package kutokit;
 
 import java.io.IOException;
+
+
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +19,10 @@ import kutokit.view.UtmController;
 import kutokit.view.RootLayoutController;
 
 public class MainApp extends Application {
-	
+
 	 private Stage primaryStage;
 	 private BorderPane rootLayout;
-	 
+
 	@Override
 	//auto execute after main execute
 	public void start(Stage primaryStage) {
@@ -46,16 +48,16 @@ public class MainApp extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-            
+
             //add controller
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
-        }	
+        }
 	}
-	
+
 	/**
      * called when cseButton clicked
      */
@@ -66,19 +68,19 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/CseView.fxml"));
             AnchorPane View = (AnchorPane) loader.load();
 
-            // add scene in center of root layout 
+            // add scene in center of root layout
             rootLayout.setCenter(View);
-            
+
             //add controller
             CseController controller = loader.getController();
             controller.setMainApp(this);
-            
+
             System.out.println("a");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * called when ctmButton clicked
      */
@@ -89,9 +91,9 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/CtmView.fxml"));
             AnchorPane View = (AnchorPane) loader.load();
 
-            // add scene in center of root layout 
+            // add scene in center of root layout
             rootLayout.setCenter(View);
-            
+
             //add controller
             CtmController controller = loader.getController();
             controller.setMainApp(this);
@@ -100,7 +102,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * called when utmButton clicked
      */
@@ -112,19 +114,18 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/UtmView.fxml"));
             AnchorPane View = (AnchorPane) loader.load();
 
-            // add scene in center of root layout 
+            // add scene in center of root layout
             rootLayout.setCenter(View);
-            
+
             //add controller
             UtmController controller = loader.getController();
             controller.setUcaTable(contextTable);
             controller.setMainApp(this);
-            System.out.println("a");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * called when pmmButton clicked
      */
@@ -135,9 +136,9 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/PmmView.fxml"));
             AnchorPane View = (AnchorPane) loader.load();
 
-            // add scene in center of root layout 
+            // add scene in center of root layout
             rootLayout.setCenter(View);
-            
+
             //add controller
             PmmController controller = loader.getController();
             controller.setMainApp(this);
@@ -176,6 +177,10 @@ public class MainApp extends Application {
             //add controller
             CtmController controller = loader.getController();
             ctmList = controller.getContextTable();
+            for(int i =0;i<ctmList.size();i++)
+            {
+            	System.out.println(ctmList.get(i).getContexts());
+            }
 		} catch (IOException e) {
             e.printStackTrace();
         }

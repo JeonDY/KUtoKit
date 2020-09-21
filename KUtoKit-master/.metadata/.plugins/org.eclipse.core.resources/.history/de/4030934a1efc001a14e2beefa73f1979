@@ -12,18 +12,19 @@ import kutokit.model.UCA;
 public class UtmController {
 
 	private MainApp mainApp;
-	
+
 	@FXML private TableView<UCA> ucaTable;
 	@FXML private TableColumn<UCA, String> CAColumn, providingColumn, notProvidingColumn, incorrectColumn, stoppedColumn;
 
 	//constructor
 	public UtmController() {
-		
+
 	}
 
 	//set MainApp
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
+
 	}
 
 	public void setUcaTable(ObservableList<CTM> contextTable) {
@@ -31,14 +32,21 @@ public class UtmController {
 		ObservableList<UCA> ucaData = FXCollections.observableArrayList();
 		for(int i=0;i<contextTable.size();i++)
 		{
-			//hazardous가 true일 경우,
 			if(contextTable.get(i).getHazardous())
 			{
-				//UCA 만들기 일단 Control Action만 가져온다고 했을 때
+				//UCA ����
 				ucaData.add(new UCA(contextTable.get(i).getContexts()));
 			}
 		}
+
 		CAColumn.setCellValueFactory(cellData -> cellData.getValue().getControlAction());
 		ucaTable.setItems(ucaData);
+
+	}
+
+	private void MakeUCA(String contexts) {
+		// TODO Auto-generated method stub
+
+
 	}
 }
